@@ -2,8 +2,7 @@
 
 This show a basic example of celery beat DST change issue (https://github.com/celery/celery/issues/6438)
 
-On DST change, celery beat stops sending minutely tasks. This happen on both
-DST start or DST end.
+On DST change, celery beat stops sending minutely tasks. This happen on DST end (but not on DST start).
 
 ## Step to reproduce
 
