@@ -1,6 +1,6 @@
 # Celery DST change issue
 
-This show a basic example of celery beat DST change issue.
+This show a basic example of celery beat DST change issue (https://github.com/celery/celery/issues/6438)
 
 On DST change, celery beat stops sending minutely tasks. This happen on both
 DST start or DST end.
@@ -38,9 +38,9 @@ a clean state):
 ```
 rm celerybeat-schedule
 
-# This is 30 seconds before DST start. The issue will NOT happen.
-faketime '2020-03-29 00:59:30Z' celery -A tasks worker --loglevel=INFO -B
+# This is 1 minute 30 seconds before DST start. The issue will NOT happen.
+faketime '2020-03-29 00:58:30Z' celery -A tasks worker --loglevel=INFO -B
 
-# This is 30 seconds before DST end. The issue will happen.
+# This is 1 minute 30 seconds before DST end. The issue will happen.
 faketime '2020-10-25 00:58:30Z' celery -A tasks worker --loglevel=INFO -B
 ```
